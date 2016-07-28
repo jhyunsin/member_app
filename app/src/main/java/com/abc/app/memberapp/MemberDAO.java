@@ -1,6 +1,7 @@
 package com.abc.app.memberapp;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -80,7 +81,7 @@ public class MemberDAO extends SQLiteOpenHelper{
         String sql ="select * from member";
         List<MemberBean> list = new ArrayList<MemberBean>();
         SQLiteDatabase db = this.getReadableDatabase();
-        db.execSQL(sql);
+        Cursor cursor = db.rawQuery(sql,null);;
         return list;
     }
 
@@ -91,7 +92,8 @@ public class MemberDAO extends SQLiteOpenHelper{
         String sql = "select * from member where id=?";
         MemberBean temp = null;
         SQLiteDatabase db = this.getReadableDatabase();
-        db.execSQL(sql);
+        Cursor cursor = db.rawQuery(sql,null);
+
         return temp;
     }
 
@@ -100,7 +102,7 @@ public class MemberDAO extends SQLiteOpenHelper{
         String sql = "select * from member where name=?";
         List<MemberBean> list = new ArrayList<MemberBean>();
         SQLiteDatabase db = this.getReadableDatabase();
-        db.execSQL(sql);
+        Cursor cursor = db.rawQuery(sql,null);
 
 
         return list;
@@ -115,7 +117,7 @@ public class MemberDAO extends SQLiteOpenHelper{
         String sql = "select count(*) as count from member";
         int count = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        db.execSQL(sql);
+        Cursor cursor = db.rawQuery(sql,null);
         return count;
     }
 
@@ -132,7 +134,7 @@ public class MemberDAO extends SQLiteOpenHelper{
             }
         }
         SQLiteDatabase db = this.getReadableDatabase();
-        db.execSQL(sql);
+        Cursor cursor = db.rawQuery(sql,null);
         return loginOk;
     }
 
@@ -141,7 +143,7 @@ public class MemberDAO extends SQLiteOpenHelper{
         int result = 0;
         String sql = "select count(*) as count from member where id = ? ";
         SQLiteDatabase db = this.getReadableDatabase();
-        db.execSQL(sql);
+        Cursor cursor = db.rawQuery(sql,null);
         return existOK;
     }
 
@@ -150,7 +152,7 @@ public class MemberDAO extends SQLiteOpenHelper{
         int result = 0;
         String sql = "select count(*) count from member where id = ?";
         SQLiteDatabase db = this.getReadableDatabase();
-        db.execSQL(sql);
+        Cursor cursor = db.rawQuery(sql,null);
 
 
         return result;
@@ -161,7 +163,7 @@ public class MemberDAO extends SQLiteOpenHelper{
         int	result = 0;
         String sql = "select count(*) count form member where";
         SQLiteDatabase db = this.getReadableDatabase();
-        db.execSQL(sql);
+        Cursor cursor = db.rawQuery(sql,null);
         return result;
     }
 
