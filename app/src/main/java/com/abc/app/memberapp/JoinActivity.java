@@ -12,7 +12,7 @@ public class JoinActivity extends Activity implements View.OnClickListener{
 
     TextView et_id,et_pw,et_name,et_ssn,et_email, et_phone;
     Button bt_join,bt_reset;
-
+    MemberService service;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,7 @@ public class JoinActivity extends Activity implements View.OnClickListener{
 
         bt_join.setOnClickListener(this);
         bt_reset.setOnClickListener(this);
-
+        service = new MemberServiceImpl(this.getApplicationContext());
     }
 
     @Override
@@ -44,6 +44,15 @@ public class JoinActivity extends Activity implements View.OnClickListener{
                         "Phone : "+ et_phone.getText().toString()+
                         "SSN : "+et_ssn.getText().toString(),Toast.LENGTH_LONG).show();
 
+                MemberBean member = new MemberBean();
+                member.setId(et_id.getText().toString());
+                member.setPw(et_pw.getText().toString());
+                member.setName(et_name.getText().toString());
+                member.setEmail(et_email.getText().toString());
+                member.setProfile("default.jpg");
+                member.setPhone(et_phone.getText().toString());
+                member.setSsn(et_ssn.getText().toString());
+                service.regist(member);
 
                 startActivity(new Intent(this,MainActivity.class));
 

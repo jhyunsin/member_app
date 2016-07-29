@@ -1,5 +1,6 @@
 package com.abc.app.memberapp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  */
 public interface MemberService {
 
-    public String regist(MemberBean bean);
+    public void regist(MemberBean bean);
 
     public MemberBean show();
 
@@ -19,14 +20,16 @@ public interface MemberService {
 
     public MemberBean findById(String findId);
 
-    public List<MemberBean> list();
+    public ArrayList<MemberBean> list();
 
     public List<MemberBean> findByName(String findName);
 
     public int genderCount(String gender);
 
     public void logout(MemberBean member);
-    public List<?> findBy(String keyword);
+//    public ArrayList<MemberBean> findBy(String keyword);
+
+    public boolean login(MemberBean member);
 
 
 }

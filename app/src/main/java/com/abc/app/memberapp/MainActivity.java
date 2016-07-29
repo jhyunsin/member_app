@@ -33,7 +33,14 @@ public class MainActivity extends Activity implements View.OnClickListener{
             case R.id.bt_login:
                 Toast.makeText(MainActivity.this,"ID :"+ et_id.getText().toString()+"PW : "+
                         et_pw.getText().toString(),Toast.LENGTH_LONG).show();
-                startActivity(new Intent(this,HomeActivity.class));
+                MemberBean member = new MemberBean();
+                member.setId(et_id.getText().toString());
+                member.setPw(et_pw.getText().toString());
+                if (service.login(member)){
+                    startActivity(new Intent(this,HomeActivity.class));
+                }else {
+                    startActivity(new Intent(this,MainActivity.class));
+                }
 
                    break;
             case R.id.bt_join:

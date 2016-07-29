@@ -4,9 +4,23 @@ package com.abc.app.memberapp;
  * Created by hb2009 on 2016-07-27.
  */
 public class MemberBean {
-    private String id, name, ssn, pw,  email,phone;
+    private String id;
+    private String name;
+    private String ssn;
+    private String pw;
+    private String email;
+    private String phone;
+    private String profile;
     private int photo;
 
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
     public String getId() {
         return id;
     }

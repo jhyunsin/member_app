@@ -33,7 +33,7 @@ public class HomeActivity extends Activity implements View.OnClickListener{
 
                 break;
             case R.id.bt_create_db:
-                MemberDAO dao = new MemberDAO(getApplicationContext());
+            //    MemberDAO dao = new MemberDAO(getApplicationContext());
 
 
                 break;

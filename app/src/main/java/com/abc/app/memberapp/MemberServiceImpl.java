@@ -2,6 +2,7 @@ package com.abc.app.memberapp;
 
 import android.content.Context;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,23 +18,9 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public String regist(MemberBean bean) {
+    public void regist(MemberBean bean) {
         // 1등록
-        String msg = "";
-        MemberBean temp = this.findById(bean.getId());
-        if (temp==null) {
-            System.out.println(bean.getId()+ "가 존재하지 않음,가입가능한 ID");
-            int result = dao.insert(bean);
-            if (result == 1) {
-                msg = "success";
-            } else {
-                msg = "fail";
-            }
-        }else{
-            System.out.println(bean.getId()+ "가 존재함 ,가입 불가한 ID");
-            msg = "fail";
-        }
-        return msg;
+       dao.insert(bean);
     }
 
     @Override
@@ -84,9 +71,9 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public List<MemberBean> list() {
+    public ArrayList<MemberBean> list() {
         // TODO Auto-generated method stub
-        return dao.list();
+        return (ArrayList<MemberBean>) dao.list();
     }
 
     @Override
@@ -113,10 +100,15 @@ public class MemberServiceImpl implements MemberService{
 
     }
 
+//    @Override
+//    public ArrayList<MemberBean> findBy(String keyword) {
+//        // TODO Auto-generated method stub
+//        return dao.findByname(keyword);
+//    }
+
     @Override
-    public List<?> findBy(String keyword) {
-        // TODO Auto-generated method stub
-        return dao.findByname(keyword);
+    public boolean login(MemberBean member) {
+       return dao.login(member);
     }
 
 
